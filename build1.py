@@ -9,10 +9,10 @@ from io import StringIO
 import pickle
 
 state_file_path = 'ultima_descarga.pkl'
-dict_picklet = {"TA_PersonalPlanta_pickle":tamaño_archivo_TA_PersonalPlanta,
-    "TA_PersonalContratohonorarios_pickle":tamaño_archivo_TA_PersonalContratohonorarios,
-    "TA_PersonalCodigotrabajo_pickle":tamaño_archivo_TA_PersonalCodigotrabajo,
-    "TA_PersonalContrata_pickle":tamaño_archivo_TA_PersonalContrata
+dict_picklet = {"TA_PersonalPlanta_pickle":5332967810,
+    "TA_PersonalContratohonorarios_pickle":5088589288,
+    "TA_PersonalCodigotrabajo_pickle":3719386149,
+    "TA_PersonalContrata_pickle":8726203526
     }
 # Guardar el estado de la última descarga usando pickle
 def guardar_estado_ultima_descarga(state_file, byte_position):
