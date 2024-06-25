@@ -38,6 +38,25 @@ class BaseDatos:
         self.namePickle = namePickle
         self.sizePickle = leer_estado_ultima_descarga(namePickle)
 
+    def saveUpdate(self):
+        session = requests.Session()
+        ultima_posicion_byte = self.sizePickle
+        headers = {'Range': f'bytes={ultima_posicion_byte}-'}
+        response = session.get(self.url, headers=headers)
+        # Si la respuesta es 206 Partial Content, procesamos los datos
+        if response.status_code == 206:
+            # Leer el contenido descargado
+            csv_content = response.content.decode('utf-8')
+            new_data_df = pd.read_csv(StringIO(csv_content))
+            if not new_data_df.empty:
+                new_data_df.to_csv(f"{self.name}_{self.sizePickle}.csv", index=False)
+            else:
+                print(f"{self.name}" vacio)
+
+
+
+
+
 lista = [BaseDatos("TA_PersonalPlanta","TA_PersonalPlanta_pickle"),
         BaseDatos("TA_PersonalContratohonorarios","TA_PersonalContratohonorarios_pickle"),
         BaseDatos("TA_PersonalCodigotrabajo","TA_PersonalCodigotrabajo_pickle"),
@@ -47,4 +66,5 @@ lista = [BaseDatos("TA_PersonalPlanta","TA_PersonalPlanta_pickle"),
 if __name__ == '__main__':
     for i in lista:
         print(i.url)
+        i.saveUpdate()
     
