@@ -9,6 +9,11 @@ from io import StringIO
 import pickle
 
 state_file_path = 'ultima_descarga.pkl'
+dict_picklet = {"TA_PersonalPlanta_pickle":tamaño_archivo_TA_PersonalPlanta,
+    "TA_PersonalContratohonorarios_pickle":tamaño_archivo_TA_PersonalContratohonorarios,
+    "TA_PersonalCodigotrabajo_pickle":tamaño_archivo_TA_PersonalCodigotrabajo,
+    "TA_PersonalContrata_pickle":tamaño_archivo_TA_PersonalContrata
+    }
 # Guardar el estado de la última descarga usando pickle
 def guardar_estado_ultima_descarga(state_file, byte_position):
     with open(state_file, 'wb') as file:
@@ -23,6 +28,7 @@ def leer_estado_ultima_descarga(state_file):
 
 
 if __name__ == '__main__':
-    ultima_posicion_byte = leer_estado_ultima_descarga(state_file_path)
-    print(f"leer {ultima_posicion_byte}")
+    for i in dict_picklet.keys():
+        aux = leer_estado_ultima_descarga(i)
+        print(i,aux)
     
