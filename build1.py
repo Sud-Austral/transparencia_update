@@ -51,7 +51,7 @@ class BaseDatos:
             if not new_data_df.empty:
                 new_data_df.to_csv(f"{self.name}_{self.sizePickle}.csv", index=False)
             else:
-                print(f"{self.name}" vacio)
+                print(f"{self.name} vacio")
 
 
 
