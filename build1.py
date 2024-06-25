@@ -36,7 +36,7 @@ class BaseDatos:
         self.file = f"{name}.csv"
         self.url = f"https://www.cplt.cl/transparencia_activa/datoabierto/archivos/{name}.csv"
         self.namePickle = namePickle
-        self.sizePickle = leer_estado_ultima_descarga(namePickle) * .9
+        self.sizePickle = leer_estado_ultima_descarga(namePickle) * .99
 
     def saveUpdate(self):
         session = requests.Session()
