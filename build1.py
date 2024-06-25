@@ -52,6 +52,8 @@ class BaseDatos:
                 new_data_df.to_csv(f"{self.name}_{self.sizePickle}.csv", index=False)
             else:
                 print(f"{self.name} vacio")
+        else:
+            print(response.status_code)
 
 
 
