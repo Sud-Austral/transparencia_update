@@ -31,7 +31,7 @@ def leer_estado_ultima_descarga(state_file):
     return 0
 
 class BaseDatos:
-    def init(self, name,namePickle):
+    def __init__(self, name,namePickle):
         self.name = name
         self.file = f"{name}.csv"
         self.url = f"https://www.cplt.cl/transparencia_activa/datoabierto/archivos/{name}.csv"
