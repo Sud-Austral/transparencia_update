@@ -44,7 +44,7 @@ class BaseDatos:
         headers = {'Range': f'bytes={ultima_posicion_byte}-'}
         response = session.get(self.url, headers=headers)
         # Si la respuesta es 206 Partial Content, procesamos los datos
-        if response.status_code == 206:
+        if response.status_code == 206 or response.status_code == 200:
             # Leer el contenido descargado
             csv_content = response.content.decode('utf-8')
             new_data_df = pd.read_csv(StringIO(csv_content))
