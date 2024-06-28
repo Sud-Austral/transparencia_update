@@ -48,7 +48,7 @@ class BaseDatos:
             # Leer el contenido descargado
             #csv_content = response.content.decode('latin')
             with open(f'archivo_{self.name}.csv', 'w', encoding='latin') as file:
-                file.write(response.content())
+                file.write(response.text)
             
             #if not new_data_df.empty:
             #    new_data_df.to_csv(f"{self.name}_{self.sizePickle}.csv", index=False)
