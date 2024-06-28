@@ -47,11 +47,13 @@ class BaseDatos:
         if response.status_code == 206 or response.status_code == 200:
             # Leer el contenido descargado
             csv_content = response.content.decode('latin')
-            new_data_df = pd.read_csv(StringIO(csv_content))
-            if not new_data_df.empty:
-                new_data_df.to_csv(f"{self.name}_{self.sizePickle}.csv", index=False)
-            else:
-                print(f"{self.name} vacio")
+            with open(f'archivo_{self.name}.csv', 'w', encoding='latin') as file:
+                file.write(csv_content)
+            
+            #if not new_data_df.empty:
+            #    new_data_df.to_csv(f"{self.name}_{self.sizePickle}.csv", index=False)
+            #else:
+            #    print(f"{self.name} vacio")
         else:
             print(response.status_code)
 
