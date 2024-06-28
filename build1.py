@@ -46,9 +46,9 @@ class BaseDatos:
         # Si la respuesta es 206 Partial Content, procesamos los datos
         if response.status_code == 206 or response.status_code == 200:
             # Leer el contenido descargado
-            csv_content = response.content.decode('latin')
+            #csv_content = response.content.decode('latin')
             with open(f'archivo_{self.name}.csv', 'w', encoding='latin') as file:
-                file.write(csv_content)
+                file.write(response.content())
             
             #if not new_data_df.empty:
             #    new_data_df.to_csv(f"{self.name}_{self.sizePickle}.csv", index=False)
